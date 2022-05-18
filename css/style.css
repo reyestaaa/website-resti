@@ -1,0 +1,164 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #d4d4d4;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Comfortaa', cursive;
+    font-size: 14px;
+    color: #000000;
+}
+
+nav {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.3em 5em;
+    height: 85px;
+    font-family: 'Unica One', cursive;
+    background-color: rgb(30, 34, 33);
+}
+
+.menu {
+    font-size: 25px;
+    display: none;
+    padding: 0 0.3em;
+    color: #ffffff;
+    background-color: #000000;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.nav-list {
+    display: flex;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    flex-wrap: wrap;
+    transition: ease;
+}
+
+.nav-item {
+    box-sizing: border-box;
+    line-height: 24px;
+}
+
+.nav-item a {
+    padding: 0.665rem;
+    display: inline-block;
+    font-size: 1.38em;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.nav-item a:hover {
+    text-decoration: underline;
+    color: #dd1515;
+}
+
+.nav-item button:hover {
+    text-decoration: underline;
+    color: #dd1515;
+}
+.img-op{
+    background:linear-gradient( rgba(0, 0, 0, 0.7) 100%, rgba(0, 0, 0, 0.7)100%),url(/img/makanan.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    object-fit: cover;
+    height: 80%;
+}
+
+.img-op-text{
+    position: absolute;
+    left: 15%;
+    top: 46%;
+    color: white;
+    font-size: large;
+    text-align: center;
+}
+
+
+.cards {
+    margin: 0 auto;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-auto-rows: auto;
+    gap: 50px;
+    font-family: sans-serif;
+    padding-top: 30px;
+}
+
+.cards * {
+    box-sizing: border-box;
+}
+
+.card__image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    border-top: 2px solid #333333;
+    border-right: 2px solid #333333;
+    border-left: 2px solid #333333;
+}
+
+.card__content {
+    font-size: 1.2em;
+    padding: 15px;
+    background: #fafafa;
+    border-right: 2px solid #333333;
+    border-left: 2px solid #333333;
+}
+
+.card__info {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #555555;
+    background: #eeeeee;
+    border-bottom: 2px solid #333333;
+    border-right: 2px solid #333333;
+    border-left: 2px solid #333333;
+}
+
+.card__info i {
+    font-size: 0.9em;
+    margin-right: 8px;
+}
+
+.card__link {
+    color: #64968c;
+    text-decoration: none;
+}
+
+.card__link:hover {
+    text-decoration: underline;
+}
+
+footer{
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+    padding: 50px;
+}
