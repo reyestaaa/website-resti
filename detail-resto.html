@@ -11,13 +11,13 @@
 <body>
 
     <nav class="nav">
-        <a href="/" class="logo">
+        <a href="./index.html" class="logo">
             RESTO'0nlinE
         </a>
 
         <ul class="nav-list">
-            <li class="nav-item"><a href="">HOME</a></li>
-            <li class="nav-item"><a href="">FAVORITE</a></li>
+            <li class="nav-item"><a href="./index.html">HOME</a></li>
+            <li class="nav-item"><a href="./favorite.html">FAVORITE</a></li>
             <li class="nav-item"><a href="">ABOUT US</a></li>
         </ul>
     </nav>
@@ -26,43 +26,37 @@
     <div class="resto-detail">
 
         <div class="title">
-            <h1>"NAMA RESTO"</h1>
+            <h1><span class="nama-resto"></span></h1>
         </div>
 
         <div class="img-re">
-            <img src="img/makanan.png" alt="">
+            <img src="img/makanan.png" alt="" id="picture-toko">
         </div>
 
         <div class="info">
            <div class="info-title">
-                <h1> Informasi "NAMA RESTO"</h1>
-                <button>❤</button>
+                <h1> Informasi <span class="nama-resto"></span></h1>
+                <button id="btn-fav">❤</button>
            </div>
             <div class="detail-resto">
-                <h2> 🏠 "NAMA RESTO"</h2>
-                <h2> 📍  "TEMPAT RESTO"</h2>
-                <h2> ⭐ "RATING RESTO"</h2>
-                <p> 📝 "DESKRIPSI RESTO"</p>
-                <h2>📌 "TAG RESTO"</h2>
+                <h2> 🏠 <span class="nama-resto"></span></h2>
+                <h2> 📍  <span id="city"></span></h2>
+                <h2> ⭐ <span id="rating"></span></h2>
+                <p> 📝 <span id="desc"></span></p>
+                <h2>📌 <span id="tags"></span></h2>
             </div>
             <div class="menu-resto">
                 <h1>Menu</h1>
                 <div class="makanan">
                     <h2>Makanan</h2>
                     <hr />
-                    <ul>
-                        <li>Makanan</li>
-                        <li>Makanan</li>
-                        <li>Makanan</li>
+                    <ul id="makanan-list">
                     </ul>
                 </div>
                 <div class="minuman">
                     <h2>Minuman</h2>
                     <hr />
-                    <ul>
-                        <li>Minuman</li>
-                        <li>Minuman</li>
-                        <li>Minuman</li>
+                    <ul id="minuman-list">
                     </ul>
                 </div>
             </div>
@@ -76,5 +70,72 @@
     </footer>
 
     <script src="./js/data.js"></script>
+    <script src="./js/indexedDb.js"></script>
+    <script>
+        startDB();
+    </script>
+
+    
+    <script>
+        // when not found param in url
+        if(getParameterByName('q') == null) window.location.href = './index.html';
+
+        // get data from data.js
+        getDataById(getParameterByName('q')).then(data => {
+            var restaurant = data.restaurant;
+            var menus = restaurant.menus;
+            // get class element
+            var namaRestoEl = document.querySelectorAll('.nama-resto');
+            var cityEl = $('#city');
+            var ratingEl = $('#rating');
+            var descEl = $('#desc');
+            var tagsEl = $('#tags');
+            var drinkList = $('#minuman-list');
+            var foodList = $('#makanan-list');
+            var pictureToko = $('#picture-toko');
+            var btnFav = $('#btn-fav');
+
+            // set picture to element
+            pictureToko.attr('src', `https://restaurant-api.dicoding.dev/images/large/${restaurant.pictureId}`);
+
+            // set value to element
+            namaRestoEl.forEach(el => {
+                el.innerHTML = restaurant.name;
+            });
+            cityEl.html(restaurant.city);
+            ratingEl.html(restaurant.rating);
+            descEl.html(restaurant.description);
+
+            var cats = restaurant.categories;
+            var catList = '';
+            cats.forEach(cat => {
+                // join category and add ', '
+                catList += cat.name + ', ';
+            });
+            // remove ',' at the end of catList
+            catList = catList.substring(0, catList.length - 2);
+            tagsEl.html(catList);
+
+            // get menu food
+            menus.foods.forEach(food => {
+                var li = document.createElement('li');
+                li.innerHTML = food.name;
+                foodList.append(li);
+            });
+
+            // get menu drinks
+            menus.drinks.forEach(drink => {
+                var li = document.createElement('li');
+                li.innerHTML = drink.name;
+                drinkList.append(li);
+            });
+
+            // btn fav onclick event
+            btnFav.on('click', function() {
+                add(restaurant);
+            });
+        });
+        
+    </script>
 </body>
 </html>

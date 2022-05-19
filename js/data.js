@@ -39,7 +39,7 @@ const setCardToElement = (data) => {
         <div class="card" data-id="${data.id}">
             <img class="card-image" src="https://restaurant-api.dicoding.dev/images/small/${data.pictureId}" alt="">
             <div class="card-content">
-                <a href="/">${data.name}</a>
+                <a href="detail-resto.html?q=${data.id}">${data.name}</a>
                 <p>
                     ${data.description.substring(0, 100)}...
                 </p>
@@ -49,7 +49,7 @@ const setCardToElement = (data) => {
                 <i class="rate">Rate ${data.rating} ⭐</i>
               </div>
               <div>
-                <a href="/" class="card-link">Lihat Restoran</a>
+                <a href="detail-resto.html?q=${data.id}" class="card-link">Lihat Restoran</a>
               </div>
             </div>
         </div>
@@ -57,8 +57,13 @@ const setCardToElement = (data) => {
     $('#restaurant-list').append(card);
 }
 
-getAllData().then(data => {
-    data.restaurants.forEach(element => {
-        setCardToElement(element);
-    });
-})
+// get parameter from url
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}

@@ -16,8 +16,8 @@
         </a>
 
         <ul class="nav-list">
-            <li class="nav-item"><a href="index.html">HOME</a></li>
-            <li class="nav-item"><a href="favorite.html">FAVORITE</a></li>
+            <li class="nav-item"><a href="./index.html">HOME</a></li>
+            <li class="nav-item"><a href="./favorite.html">FAVORITE</a></li>
             <li class="nav-item"><a href="">ABOUT US</a></li>
         </ul>
     </nav>
@@ -112,5 +112,13 @@
     </footer>
 
     <script src="./js/data.js"></script>
+
+    <script>
+      getAllData().then(data => {
+          data.restaurants.forEach(element => {
+              setCardToElement(element);
+          });
+      })
+    </script>
 </body>
 </html>
