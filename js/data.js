@@ -39,17 +39,17 @@ const setCardToElement = (data) => {
         <div class="card" data-id="${data.id}">
             <img class="card-image" src="https://restaurant-api.dicoding.dev/images/small/${data.pictureId}" alt="">
             <div class="card-content">
-                <h3 class="card-title mb-4">${data.name}</h3>
-              <p class="mt-2">
-                ${data.description.substring(0, 50)}...
-              </p>
+                <a href="/">${data.name}</a>
+                <p>
+                    ${data.description.substring(0, 100)}...
+                </p>
             </div>
             <div class="card-info">
               <div>
                 <i class="rate">Rate ${data.rating} ⭐</i>
               </div>
               <div>
-                <a href="./" class="card-link">Lihat Restoran</a>
+                <a href="/" class="card-link">Lihat Restoran</a>
               </div>
             </div>
         </div>
