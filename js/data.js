@@ -57,6 +57,30 @@ const setCardToElement = (data) => {
     $('#restaurant-list').append(card);
 }
 
+const setCardToElement2 = (data) => {
+    const card = `
+        <div class="card" data-id="${data.id}">
+            <img class="card-image" src="https://restaurant-api.dicoding.dev/images/small/${data.pictureId}" alt="">
+            <div class="card-content">
+                <a href="detail-resto.html?q=${data.id}">${data.name}</a>
+                <p>
+                    ${data.description.substring(0, 100)}...
+                </p>
+            </div>
+            <div class="card-info">
+              <div>
+                <i class="rate">Rate ${data.rating} ⭐</i>
+              </div>
+              <div style="display: flex;">
+                <a href="detail-resto.html?q=${data.id}" class="card-link" style="margin-right: 1em;">Lihat Restoran</a>
+                <button data-id="${data.id}" class="btn-delete-fav" style="background-color: red; cursor: pointer;" title="Hapus dari favorite">X</button>
+              </div>
+            </div>
+        </div>
+    `;
+    $('#restaurant-list').append(card);
+}
+
 // get parameter from url
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;

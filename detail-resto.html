@@ -71,9 +71,6 @@
 
     <script src="./js/data.js"></script>
     <script src="./js/indexedDb.js"></script>
-    <script>
-        startDB();
-    </script>
 
     
     <script>
@@ -130,10 +127,7 @@
                 drinkList.append(li);
             });
 
-            // btn fav onclick event
-            btnFav.on('click', function() {
-                add(restaurant);
-            });
+            btnFav.attr('data-resto', restaurant.id);
         });
         
     </script>
