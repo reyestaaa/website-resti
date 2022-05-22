@@ -6,27 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website-resto</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <nav class="nav">
-        <a href="/" class="logo">
-          RESTO'0nlinE
+    <div class="navbar" id="myTopnav">
+        <a class="logo" href="./index.html">Home</a>
+        <a href="./favorite.html">Favorite</a>
+        <a href="#!">About us</a>
+        <a href="javascript:void(0);" class="icon" onclick="Nav()">
+          <i class="fa fa-bars"></i>
         </a>
-
-        <ul class="nav-list">
-            <li class="nav-item"><a href="index.html">HOME</a></li>
-            <li class="nav-item"><a href="favorite.html">FAVORITE</a></li>
-            <li class="nav-item"><a href="">ABOUT US</a></li>
-        </ul>
-    </nav>
-
-    <div class="img-op" style="">
-        <div class="img-op-text">
-            <h1>Selamat datang di Website RESTO'0nlinE</h1>
-        </div>
     </div>
+
+    <div class="img-thumb">
+
+        <div class="title">
+          <h1>Selamat datang di Website RESTO'0nlinE</h1>
+        </div>
+    
+        <div class="img-re">
+            <img src="img/makanan.png" >
+        </div>
+        
+      </div>
 
     <!-- Kalau FAVORITE belum di add -->
     <div class="alert" id="alert-fav">
@@ -41,6 +45,7 @@
         <p>Copyright © 2020 - <a href="">Name</a></p>
     </footer>
 
+    <script src="./js/main.js"></script>
     <script src="./js/data.js"></script>
     <script src="./js/indexedDb.js"></script>
 </body>
